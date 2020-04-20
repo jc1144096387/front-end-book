@@ -1,0 +1,20 @@
+
+
+div{
+    /* 默认情况下背景会侵入边框范围，因此以下代码不能实现半透明边框 */
+    /* border: 10px solid hsla(0,0%,100%,.5);
+    background: white; */
+
+    /* background-clip的初值为border-box,此处将background-clip设置为padding-box，使背景被限制在padding-box之内，不会侵入边框范围，以实现半透明边框 */
+    /* 类似的也可以设置为content-box，来使背景被限制(剪裁)在content-box内 */
+    /* border-box  边框盒
+       padding-box 内边距盒
+       content-box 内容盒 
+    */
+    border: 10px solid hsla(0,0%,100%,.5);
+    background: white;
+    background-clip: padding-box;
+
+
+}
+

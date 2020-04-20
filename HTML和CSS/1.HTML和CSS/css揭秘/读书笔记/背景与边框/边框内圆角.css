@@ -1,0 +1,9 @@
+div{
+    background: tan;
+    border-radius: .8em;
+    padding: 1em;
+    /* box-shadow应设置为大于圆角半径*(根号二-1)，小于描边(outline)的宽度值
+    为了方便计算可以取圆角半径的一半 */
+    box-shadow: 0 0 0 .6em #655;
+    outline: .6em solid #655;
+}

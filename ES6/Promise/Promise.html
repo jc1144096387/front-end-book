@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+
+<body>
+
+  <script>
+    // Promise基本用法
+    // 创建一个Promise实例
+    var promise= new Promise(function(resolve , reject) { 
+      // ... some code 
+      
+      // res.success表示异步操作是否成功
+      // 成功调用resolve函数，失败调用reject函数
+      if(res.success){
+        resolve(res.result);
+      }else{
+        reject(new Error(res.message));
+      }
+
+    });
+
+    // 用 Promise 对象实现的 AJAX 操作
+    var getJSON = function (url) {
+      var promise = new Promise(function (resolve, reject) {
+        var client = new XMLHttpRequest();
+        client.open("GET", url);
+        client.onreadystatechange = handler;
+        client.responseType = "json";
+        client.setRequestHeader("Accept", "application/json");
+        client.send();
+        function handler() {
+          if (this.readyState !== 4) {
+            return;
+          }
+          if (this.status === 200) {
+            resolve(this.response);
+          } else {
+            reject(new Error(this.statusText));
+          }
+        }
+      });
+
+      return promise;
+    }
+
+    getJSON("/posts.json").then(function (json) {
+      console.log("Contents:" + json);
+    }, function (error) {
+      console.error("出错了", error);
+    });
+
+
+    // 
+  </script>
+</body>
+
+</html>

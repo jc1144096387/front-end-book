@@ -1,0 +1,34 @@
+div{
+    /* 在此处写上bottom right是一个回退方案，兼容不支持background-position的浏览器 */
+    /* background: url(背景定位1.gif) no-repeat bottom right #58a;
+    background-position: right 20px bottom 10px; */
+
+
+
+    /* 有时我们希望padding值和偏移值相同 */
+    /* padding: 10px;
+    background: url(背景定位1.gif) no-repeat bottom right #58a;
+    background-position: right 10px bottom 10px; */
+
+
+    /* 不过上述代码不够DRY */
+    /* background-origin的初值时padding-box */
+    /* 此处修改为content-box,将 背景图片 限制在内容区 */
+    /* 这样需求改变时只需更改padding值即可，当然也可以设置background-position来实现额外的偏移值 */
+    /* padding: 10px;
+    background: url(背景定位1.gif) no-repeat bottom right #58a;
+    background-origin: content-box; */
+
+
+    /* calc()方案 */
+    /* 请不要忘记在 calc() 函数
+    内部的 - 和 + 运算符的两侧各加
+    一个空白符，否则会产生解析错
+    误！这个规则如此怪异，是为了
+    向前兼容：未来，在 calc() 内部
+    可能会允许使用关键字，而这些
+    关键字可能会包含连字符（即减
+    号）。 */
+    background: url("背景定位1.gif") no-repeat bottom right #58a;
+    background-position: calc(100% - 20px) calc(100% - 10px);
+}
